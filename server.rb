@@ -28,3 +28,18 @@ post '/links' do
   Link.create(:url => url, :title => title, :tags => tags)
   redirect to('/')
 end
+
+get '/tags/:text' do
+  tag = Tag.first(:text => params[:text])
+  @links = tag ? tag.links : []
+  erb :index
+end
+
+def add_link(url, title, tags = [])
+  within('#new-link') do
+    fill_in 'url', :with => url
+    fill_in 'title', :with => title
+    fill_in 'tags', :with => tags.join(' ')
+    click_button 'Add link'
+  end
+end

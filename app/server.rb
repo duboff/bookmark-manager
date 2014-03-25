@@ -1,19 +1,11 @@
 require 'sinatra'
 require 'data_mapper'
 require 'dm-postgres-adapter'
-
-
-env = ENV['RACK_ENV'] || "development"
-
-DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
-
 require './lib/link'
 require './lib/tag'
 require './lib/user'
-
-DataMapper.finalize
-
-DataMapper.auto_upgrade!
+require_relative 'helpers/application'
+require_relative 'data_mapper_setup'
 
 enable :sessions
 set :session_secret, 'a very long and random'

@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require 'rack-flash'
 require './lib/link'
 require './lib/tag'
 require './lib/user'
@@ -9,6 +10,8 @@ require_relative 'data_mapper_setup'
 
 enable :sessions
 set :session_secret, 'a very long and random'
+
+use Rack::Flash
 
 get '/' do
   @links = Link.all
@@ -32,21 +35,19 @@ get '/tags/:text' do
 end
 
 get '/users/new' do
+  @user = User.new
   erb :"users/new"
 end
 
 post '/users' do
-  user = User.create(:email => params[:email],
-                     :password => params[:password])
-  session[:user_id] = user.id
-  redirect to('/')
-end
-
-def add_link(url, title, tags = [])
-  within('#new-link') do
-    fill_in 'url', :with => url
-    fill_in 'title', :with => title
-    fill_in 'tags', :with => tags.join(' ')
-    click_button 'Add link'
+  @user = User.create(:email => params[:email],
+                      :password => params[:password],
+                      :password_confirmation => params[:password_confirmation])
+  if @user.save
+    session[:user_id] = @user.id
+    redirect to('/')
+  else
+    flash[:notice] = "Sorry, your passwords don't match"
+    erb :"users/new"
   end
 end

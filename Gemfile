@@ -7,6 +7,7 @@ gem 'pg'
 gem 'database_cleaner'
 gem 'bcrypt-ruby'
 gem 'rack-flash3'
+gem 'sinatra-partial'
 
 group :development, :test do
   gem 'capybara'

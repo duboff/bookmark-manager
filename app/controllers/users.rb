@@ -15,3 +15,27 @@ post '/users' do
     erb :"users/new"
   end
 end
+
+get '/users/passwordreset' do
+  erb :'users/passwordreset'
+end
+
+post '/users/passwordreset' do
+  user = User.first(:email => params[:email])
+  if user
+    user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+    user.password_token_timestamp = Time.now
+    user.save
+    redirect to('/users/passwordreset/success')
+  else
+    redirect to('/users/passwordreset/fail')
+  end
+end
+
+get '/users/passwordreset/success' do
+  erb :'users/passwordreset_success'
+end
+
+get '/users/passwordreset/fail' do
+  erb :'users/passwordreset_fail'
+end

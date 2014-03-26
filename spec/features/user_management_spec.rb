@@ -59,3 +59,34 @@ feature 'User signs out' do
     expect(page).not_to have_content "Welcome, test@test.com"
   end
 end
+
+feature 'User forgets his password' do
+  before(:each) do
+    User.create(:email => "test@test.com",
+                :password => 'test',
+                :password_confirmation => 'test')
+  end
+
+  scenario 'and exists in the database' do
+    visit '/users/passwordreset'
+    expect(page).to have_content 'Please enter your email'
+    fill_in :email, :with => 'test@test.com'
+    click_button 'Send'
+    expect(current_path).to eq '/users/passwordreset/success'
+    expect(page).to have_content 'Password recovery email sent'
+    user = User.first(:email => 'test@test.com')
+    expect(user.password_token).not_to be_empty
+    expect(user.password_token_timestamp).not_to be_empty
+  end
+
+  scenario 'and dpes not exist in the database' do
+    visit '/users/passwordreset'
+    expect(page).to have_content 'Please enter your email'
+    fill_in :email, :with => 'wrong@test.com'
+    click_button 'Send'
+    expect(current_path).to eq '/users/passwordreset/fail'
+    expect(page).to have_content "Can't find this email in our database."
+    click_button 'Try again'
+    expect(current_path).to eq '/users/passwordreset'
+  end
+end

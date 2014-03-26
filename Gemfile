@@ -8,6 +8,7 @@ gem 'database_cleaner'
 gem 'bcrypt-ruby'
 gem 'rack-flash3'
 gem 'sinatra-partial'
+gem 'mandrill-api'
 
 group :development, :test do
   gem 'capybara'

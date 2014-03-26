@@ -61,9 +61,13 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.14)
       data_objects (= 0.10.14)
+    excon (0.32.1)
     fastercsv (1.5.5)
     json (1.8.1)
     json_pure (1.8.1)
+    mandrill-api (1.0.51)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
     mime-types (2.2)
     mini_portile (0.5.2)
     multi_json (1.9.2)
@@ -108,6 +112,7 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
+  mandrill-api
   pg
   rack-flash3
   rspec

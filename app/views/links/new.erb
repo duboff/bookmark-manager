@@ -1,11 +1,3 @@
-Current links:
-
-<ul id='links'>
-  <% @links.each do |link| %>
-    <%= partial :link, :locals => {:link => link}  %>
-  <% end %>
-</ul>  
-
 <h1>Submit a new link</h1>
 <form action="/links" method="post">    
   <p>

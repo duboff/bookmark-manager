@@ -1,5 +1,6 @@
 get '/users/new' do
   @user = User.new
+
   erb :"users/new"
 end
 
@@ -60,4 +61,10 @@ post '/users/reset_success' do
     flash[:notice] = 'Something went wrong. Please try again.'
   end
   redirect to('/')
+end
+
+get '/users/:email' do
+  @user = User.first(:email => params[:email])
+  @links = @user ? @user.links : []
+  erb :index
 end

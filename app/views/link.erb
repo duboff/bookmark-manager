@@ -1,12 +1,21 @@
 <li class='link'>
-  <div class='star hollow'>&#9734;</div>
-  <div class='star solid'>&#9733;</div>
+  <div class='star'>
+  <% if user.links.include?(link) %>
+    &#9733;
+  <% else %>
+    <form method="post" action="/links/favourite"><input type="submit" value="&#9734;"><input type="hidden" name="link_id" value="<%= link.id %>"></form>
+  <% end %>
+  </div>
   <a class='title' href="<%= link.url %>"><%= link.title %></a>
-<!--   <div class='description'>
+  <div class='description'>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </div>
+
   <span class='source'>
     added yesterday by 
-    <a href="#">evgeny@makersacademy.com</a>
-  </span> -->
+    <a href="/users/<%= link.creator.email %>"><%= link.creator.email %></a>. 
+  </span>
+  <span class='favs'>
+    &#9733; <%= link.users.count %>
+  </span>
 </li>

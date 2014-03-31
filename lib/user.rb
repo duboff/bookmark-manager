@@ -3,6 +3,7 @@ require 'bcrypt'
 class User
 
   attr_reader :password
+  attr_reader :email
   attr_accessor :password_confirmation
 
   include DataMapper::Resource
@@ -14,6 +15,9 @@ class User
   property :password_digest, Text
   property :password_token, Text
   property :password_token_timestamp, Text
+
+  has n, :links, :through => Resource
+  # has n, :tags
 
   def password=(password)
     @password = password

@@ -26,23 +26,44 @@ a {
 }
 
 .button {
-  display: inline-block; /* display inline but have dimensions */
-  width: 110px;
-  cursor: pointer;
-  font-size: 16px;
-  background-color: #82B743;
-  border: 2px solid white;
-  color: white; /*text colour*/
-  padding: 5px 10px;
-  text-align: center;
-  border-radius: 4px; /*rounded corners*/
-  margin-left: 5px;
-  margin-right: 5px;
-  text-shadow: 0 0 2px rgba(0,0,0,0.4); /*for readability*/
+  font-size:12px;
+  font-family:Verdana;
+  font-weight:normal;
+  -moz-border-radius:7px;
+  -webkit-border-radius:7px;
+  border-radius:7px;
+  border:1px solid #337fed;
+  padding:5px 15px;
+  text-decoration:none;
+  background:-moz-linear-gradient( center top, #3d94f6 10%, #1e62d0 95% );
+  background:-ms-linear-gradient( top, #3d94f6 10%, #1e62d0 95% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0');
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(10%, #3d94f6), color-stop(95%, #1e62d0) );
+  background-color:#3d94f6;
+  color:#ffffff;
+  display:inline-block;
+  text-shadow:1px 1px 0px #1570cd;
+  -webkit-box-shadow:inset 1px 1px 0px -50px #97c4fe;
+  -moz-box-shadow:inset 1px 1px 0px -50px #97c4fe;
+  box-shadow:inset 1px 1px 0px -50px #97c4fe;
+}.button:hover {
+  background:-moz-linear-gradient( center top, #1e62d0 10%, #3d94f6 95% );
+  background:-ms-linear-gradient( top, #1e62d0 10%, #3d94f6 95% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6');
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(10%, #1e62d0), color-stop(95%, #3d94f6) );
+  background-color:#1e62d0;
+}.button:active {
+  position:relative;
+  top:1px;
 }
 
+
 #new-link {
-  
+
+}
+
+#tags {
+  margin-top: 5px;
 }
 
 /* a link that has both classes. Overrides the previous declaration */
@@ -96,20 +117,16 @@ header {
   background-color: #EEE;
   box-shadow: 0 0 5px rgba(0,0,0,0.4);
   margin: 10px inherit;
-  padding: 15px 10px;  
+  padding: 15px 15px;  
   position: relative; /* necessary for absolute positioning of the stars */
 }
   .link .star {
     position: absolute; /* absolute, relative to the first parent that's relative */
-    font-size: 24px;
-    right: 5px;
-    top: 5px;
-    color: yellowgreen;
+    font-size: 15px;
+    right: 10px;
+    top: 15px;
+    color: black;
     cursor: pointer;
-  }
-
-  .link .star.solid {
-    opacity: 0;
   }
 
   .link a.title {
@@ -122,6 +139,10 @@ header {
 
   .link .source {    
     float: right; /* http://learnlayout.com/float.html and the next 4 sections */  
+    font-size: 12px;
+  }
+    .link .favs {    
+    float: left; /* http://learnlayout.com/float.html and the next 4 sections */  
     font-size: 12px;
   }
 
@@ -142,8 +163,44 @@ header {
    background-color: rgba(169,29,42,0.75); 
   }
 
+.tag {
+  font-size:12px;
+  font-family:Verdana;
+  font-weight:normal;
+  -moz-border-radius:0px;
+  -webkit-border-radius:0px;
+  border-radius:0px;
+  border:0px solid #dcdcdc;
+  padding:2px 4px;
+  text-decoration:none;
+  background:-moz-linear-gradient( center top, #ededed 10%, #dfdfdf 95% );
+  background:-ms-linear-gradient( top, #ededed 10%, #dfdfdf 95% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(10%, #ededed), color-stop(95%, #dfdfdf) );
+  background-color:#ededed;
+  color:#858cb3;
+  display:inline-block;
+  text-shadow:-50px -50px 0px #ffffff;
+  -webkit-box-shadow:inset -50px -50px 0px -50px #ffffff;
+  -moz-box-shadow:inset -50px -50px 0px -50px #ffffff;
+  box-shadow:inset -50px -50px 0px -50px #ffffff;
+}.tag:hover {
+  background:-moz-linear-gradient( center top, #dfdfdf 10%, #ededed 95% );
+  background:-ms-linear-gradient( top, #dfdfdf 10%, #ededed 95% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(10%, #dfdfdf), color-stop(95%, #ededed) );
+  background-color:#dfdfdf;
+}.tag:active {
+  position:relative;
+  top:1px;
+}
+
+
+
 h1 {
   font-size: 22px ;
+  margin-bottom: 5px;
+  margin-top: 20px;
 }
 
 form {

@@ -1,10 +1,22 @@
-Current links:
+<% if @tag %>
+ <h1>All links tagged <%= @tag.text %></h1>
+<% elsif @user %>
+  <h1>All links added by <%= @user.email %></h1>
+<% else %>
+<h1>Saved links</h1> 
+<% end %>
 
 <ul id='links'>
   <% @links.each do |link| %>
-    <%= partial :link, :locals => {:link => link}  %>
+    <%= partial :link, :locals => {:link => link, :user => User.first(:id => session[:user_id])}  %>
   <% end %>
 </ul>  
 
-<%= partial :'links/new' %>
-
+<% if @tags %>
+<h1>Search by Tag:</h1>
+  <ul id='tags'>
+    <% @tags.each do |tag| %>
+      <%= partial :tag, :locals => {:tag => tag}  %>
+    <% end %>
+  </ul>
+<% end %>

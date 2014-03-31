@@ -6,18 +6,5 @@ Current links:
   <% end %>
 </ul>  
 
-<h1>Submit a new link</h1>
-<form action="/links" method="post">    
-  <p>
-    <input type="text" name="url" placeholder="Url">
-  </p>
-  <p>
-    <input type="text" name="title" placeholder="Title">  
-  </p>
-  <p>
-    <input type="text" name="tags" placeholder="Tags (space-separated)">
-  </p>    
-  <p>
-    <input type="submit" value="Add link" class='button'>  
-  </p>    
-</form>
+<%= partial :'links/new' %>
+

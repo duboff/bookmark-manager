@@ -41,6 +41,10 @@ a {
   text-shadow: 0 0 2px rgba(0,0,0,0.4); /*for readability*/
 }
 
+#new-link {
+  
+}
+
 /* a link that has both classes. Overrides the previous declaration */
 .button.highlighted {
   background-color: #b77843;

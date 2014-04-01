@@ -22,5 +22,7 @@ require_relative 'controllers/sessions'
 enable :sessions
 set :session_secret, 'a very long and random'
 set :partial_template_engine, :erb
+set :static, true
+set :public_folder, File.join(File.dirname(__FILE__), '..', 'public')
 
 use Rack::Flash

@@ -1,6 +1,5 @@
 get '/users/new' do
   @user = User.new
-
   erb :"users/new"
 end
 
@@ -65,6 +64,8 @@ end
 
 get '/users/:email' do
   @user = User.first(:email => params[:email])
-  @links = @user ? @user.links : []
-  erb :index
+  @links_created = @user ? Link.all(:creator => @user) : []
+  @links_favourited = @user ? @user.links : []
+  @tags = @user ? Tag.all(:user_id => @user.id) : []
+  erb :user_profile
 end

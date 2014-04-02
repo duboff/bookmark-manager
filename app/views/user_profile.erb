@@ -1,0 +1,23 @@
+<% if @user %>
+  <h1>All links added by <%= @user.email %></h1>
+  <ul id='links_created'>
+    <% @links_created.each do |link| %>
+      <%= partial :link, :locals => {:link => link, :user => User.first(:id => session[:user_id])}  %>
+    <% end %>
+  </ul>
+     <h1>All links favourited by <%= @user.email %></h1>
+  <ul id='links_favourited'>
+    <% @links_favourited.each do |link| %>
+      <%= partial :link, :locals => {:link => link, :user => User.first(:id => session[:user_id])}  %>
+    <% end %>
+  </ul>
+  <% if @tags %>
+    <h1>Tags added by <%= @user.email %></h1>
+    <ul id='tags'>
+      <% @tags.each do |tag| %>
+        <%= partial :tag, :locals => {:tag => tag}  %>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+

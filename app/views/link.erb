@@ -1,10 +1,12 @@
 <li class='link'>
   <div class='star'>
-  <% if user.links.include?(link) %>
-    &#9733;
-  <% else %>
-    <form method="post" action="/links/favourite"><input type="submit" value="&#9734;"><input type="hidden" name="link_id" value="<%= link.id %>"></form>
-  <% end %>
+    <% if user %>
+      <% if user.links.include?(link) %>
+        &#9733;
+      <% else %>
+        <form method="post" action="/links/favourite"><input type="submit" value="&#9734;"><input type="hidden" name="link_id" value="<%= link.id %>"></form>
+      <% end %>
+    <% end %>
   </div>
   <a class='title' href="<%= link.url %>"><%= link.title %></a>
   <div class='description'>

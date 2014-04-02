@@ -17,7 +17,7 @@ class User
   property :password_token_timestamp, Text
 
   has n, :links, :through => Resource
-  # has n, :tags
+  has n, :tags, :through => Resource
 
   def password=(password)
     @password = password

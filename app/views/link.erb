@@ -10,12 +10,19 @@
   </div>
   <a class='title' href="<%= link.url %>"><%= link.title %></a>
   <div class='description'>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    <%= link.description %>
   </div>
+ <div class='tags'>
+    <ul id='tags'>
+  <% link.tags.each do |tag| %>
+    <%= partial :tag, :locals => { :tag => tag }  %>
+  <% end %>
+</ul>
+  </div> 
 
   <span class='source'>
     added yesterday by 
-    <a href="/users/<%= link.creator.email %>"><%= link.creator.email %></a>. 
+    <a href="/users/<%= link.creator.email %>"><%= link.creator.username %></a>. 
   </span>
   <span class='favs'>
     &#9733; <%= link.users.count %>

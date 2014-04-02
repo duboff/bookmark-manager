@@ -9,5 +9,5 @@ class Tag
   has n, :links, :through => Resource
   has n, :users, :through => Resource
 
-
+  validates_presence_of :text
 end

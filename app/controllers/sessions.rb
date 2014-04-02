@@ -1,5 +1,10 @@
 get '/sessions/new' do
+  # if session[:user_id]
+  #   flash[:notice] = "You seem to be logged in already"
+  #   redirect to('/')
+  # else
   erb :"sessions/new"
+  # end
 end
 
 post '/sessions' do

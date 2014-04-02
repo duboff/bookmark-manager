@@ -1,6 +1,6 @@
 <% if @tag %>
   <h1>All links tagged <%= @tag.text %></h1>
-<% elsif @links %>
+<% elsif !@links.empty? %>
   <h1>Saved links</h1> 
 <% end %>
 
@@ -10,7 +10,7 @@
   <% end %>
 </ul>
 
-<% if @tags %>
+<% if !@tags.empty? %>
   <h1>Search by Tag:</h1>
   <ul id='tags'>
     <% @tags.each do |tag| %>
@@ -18,3 +18,7 @@
     <% end %>
   </ul>
 <% end %>
+
+<% if @tags.empty? && @links.empty? %>
+  <h1>Nothing to display. You are probably our first user.</h1>
+  <% end %>

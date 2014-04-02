@@ -1,12 +1,14 @@
 post '/links' do
   url = params["url"]
   title = params["title"]
+  description = params["description"]
   creator = User.first(:id => session[:user_id])
   user_id = creator.id
   tags = params["tags"].split(" ").map{|tag| Tag.first_or_create(:text => tag, :user_id => user_id)}
   link = Link.create(:url => url,
                      :title => title,
                      :tags => tags,
+                     :description => description,
                      :user_id => user_id,
                      :creator => creator)
   if request.xhr?
@@ -17,7 +19,7 @@ post '/links' do
 end
 
 get '/links/new' do
-  redirect to('/sessions/new') if session[:user_id] == nil
+  redirect to('/sessions/new') unless session[:user_id]
   erb :"links/new", :layout => !request.xhr?
 end
 

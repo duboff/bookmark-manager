@@ -4,7 +4,7 @@
 
 body {
   font-family: Helvetica, Arial, Sans-serif;
-  background-image: url(/images/extra_clean_paper.png);
+  background-image: url(/images/photography.png);
   color: #333;  
 }
 
@@ -229,6 +229,8 @@ footer {
   footer img {
     /* http://stackoverflow.com/questions/10658475/3px-extra-height-on-a-div-with-an-image-inside-it */
     vertical-align: top;
+    height: 70px;
+    width: auto;
   }
 
   footer #technologies {

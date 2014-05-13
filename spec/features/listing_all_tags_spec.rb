@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-feature "Shows list of avaialble tags" do
-  before(:each) {
-    Link.create(:title => "Makers Academy",
-                :url => "http://www.makersacademy.com",
-                :tags => ['education', 'ruby'])
-  }
+include SessionHelpers
+include LinkHelpers
 
-  scenario "when opening the hom page" do
+feature "Shows list of avaialble tags" do
+
+  scenario "when opening the home page" do
+    sign_up
+    add_link("http://www.makersacademy.com", "Makers Academy", ['education', 'ruby'])
     visit '/'
     expect(page).to have_content("education")
   end

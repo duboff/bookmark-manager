@@ -3,6 +3,8 @@
 ENV["RACK_ENV"] = 'test'
 
 require './app/server'
+require './spec/helpers/session'
+require './spec/helpers/links'
 require 'database_cleaner'
 require 'capybara/rspec'
 

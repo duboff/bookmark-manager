@@ -4,13 +4,15 @@
   <h1>Saved links</h1> 
 <% end %>
 
-<ul id='links'>
-  <% @links.each do |link| %>
-    <%= partial :link, :locals => {:link => link, :user => User.first(:id => session[:user_id])}  %>
-  <% end %>
-</ul>
+<% if @links.any? %>
+  <ul id='links'>
+      <% @links.each do |link| %>
+      <%= partial :link, :locals => {:link => link, :user => User.first(:id => session[:user_id])}  %>
+    <% end %>
+  </ul>
+<% end %>
 
-<% if !@tags.empty? %>
+<% if @tags %>
   <h1>Search by Tag:</h1>
   <ul id='tags'>
     <% @tags.each do |tag| %>
@@ -19,6 +21,6 @@
   </ul>
 <% end %>
 
-<% if @tags.empty? && @links.empty? %>
+<% if !@tags && @links.empty? %>
   <h1>Nothing to display. You are probably our first user.</h1>
   <% end %>

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require_relative '../helpers/session'
 
 include SessionHelpers
 
@@ -75,11 +74,10 @@ feature 'User forgets his password' do
     expect(current_path).to eq '/users/passwordreset/success'
     expect(page).to have_content 'Password recovery email sent'
     user = User.first(:email => 'test@test.com')
-    expect(user.password_token).not_to be_empty
-    expect(user.password_token_timestamp).not_to be_empty
+    expect(current_path).to eq '/users/passwordreset/success'
   end
 
-  scenario 'and dpes not exist in the database' do
+  scenario 'and does not exist in the database' do
     visit '/users/passwordreset'
     expect(page).to have_content 'Please enter your email'
     fill_in :email, :with => 'wrong@test.com'

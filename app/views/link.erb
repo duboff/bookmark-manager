@@ -1,31 +1,35 @@
 <li class='link'>
   <div class='star'>
     <% if user %>
-      <% if user.links.include?(link) %>
+      <% if link.users.include?(user) %>
         &#9733;
       <% else %>
-        <form method="post" action="/links/favourite"><input type="submit" value="&#9734;"><input type="hidden" name="link_id" value="<%= link.id %>"></form>
+        <form method="post" action="/links/favourite">
+          <input type="hidden" name="link_id" value="<%= link.id %>">
+          <input type="submit" value="&#9734;" id="add_to_fav">
+        </form>
       <% end %>
     <% end %>
   </div>
+  
   <a class='title' href="<%= link.url %>"><%= link.title %></a>
+  
   <div class='description'>
     <%= link.description %>
   </div>
- <div class='tags'>
+  <div class='tags'>
     <ul id='tags'>
-  <% link.tags.each do |tag| %>
-    <%= partial :tag, :locals => { :tag => tag }  %>
-  <% end %>
-</ul>
+      <% link.tags.each do |tag| %>
+        <%= partial :tag, :locals => { :tag => tag }  %>
+      <% end %>
+    </ul>
   </div> 
 
   <span class='source'>
     added yesterday by 
-    <a href="/users/<%= link.creator.email %>"><%= link.creator.username %></a>. 
+    <a href="/users/<%= link.creator.email %>"><%= link.creator.username %></a> 
   </span>
   <span class='favs'>
     &#9733; <%= link.users.count %>
   </span>
-
 </li>

@@ -122,12 +122,17 @@ header {
 }
   .link .star {
     position: absolute; /* absolute, relative to the first parent that's relative */
-    font-size: 15px;
-    right: 10px;
-    top: 15px;
-    color: black;
+    font-size: 24px;
+    right: 5px;
+    top: 5px;
+    color: yellowgreen;
     cursor: pointer;
   }
+
+  .link .star.solid {
+    opacity: 0;
+  }
+
 
   .link a.title {
     letter-spacing: 1px;    
@@ -142,7 +147,7 @@ header {
     font-size: 12px;
   }
     .link .favs {    
-    float: left; /* http://learnlayout.com/float.html and the next 4 sections */  
+     /* http://learnlayout.com/float.html and the next 4 sections */  
     font-size: 12px;
   }
 

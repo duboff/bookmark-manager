@@ -14,5 +14,4 @@ group :development, :test do
   gem 'capybara'
   gem 'shotgun'
   gem 'rspec'
-
 end

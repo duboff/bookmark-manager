@@ -1,4 +1,5 @@
 <li class='link'>
+
   <div class='star'>
     <% if user %>
       <% if link.users.include?(user) %>
@@ -10,13 +11,18 @@
         </form>
       <% end %>
     <% end %>
+ 
+    
   </div>
   
-  <a class='title' href="<%= link.url %>"><%= link.title %></a>
-  
+  <a class='title' href="<%= link.url %>"><%= link.title %></a> 
+      <span class='favs'>
+    &#9733; <%= link.users.count %>
+  </span>
   <div class='description'>
     <%= link.description %>
   </div>
+
   <div class='tags'>
     <ul id='tags'>
       <% link.tags.each do |tag| %>
@@ -29,7 +35,6 @@
     added yesterday by 
     <a href="/users/<%= link.creator.email %>"><%= link.creator.username %></a> 
   </span>
-  <span class='favs'>
-    &#9733; <%= link.users.count %>
-  </span>
+
+ 
 </li>

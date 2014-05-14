@@ -34,5 +34,6 @@ Please note, password reminder will only work on Heroku.
 
 ## Screenshot
 
+![Screenshot](/bookmark-manager.png "Sudoku Web Version")
 
 

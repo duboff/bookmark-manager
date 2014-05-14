@@ -3,6 +3,7 @@ post '/links' do
   title = params["title"]
   description = params["description"]
   creator = User.first(:id => session[:user_id])
+  user_id = creator.id
   tags = params["tags"].split(" ").map{|tag| Tag.first_or_create(:text => tag, :user_id => user_id)}
   link = Link.create(:url => url,
                      :title => title,
